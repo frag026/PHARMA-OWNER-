@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PharmaBridge - Local Pharmacy Delivery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0da2e7",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101c22",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 py-3 lg:px-40 bg-white dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl font-bold">medical_services</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">PharmaBridge</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="hidden md:flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#how-it-works">How It Works</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#features">Features</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#reviews">Reviews</a>
+</div>
+<div class="flex gap-2">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-xl h-10 px-4 bg-primary text-white text-sm font-bold tracking-wide hover:opacity-90 transition-opacity">
+<span>Get Started</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-xl h-10 px-4 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span>Login</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<!-- Hero Section -->
+<div class="px-6 lg:px-40 py-12 md:py-20">
+<div class="flex flex-col gap-8 lg:flex-row items-center">
+<div class="flex flex-col gap-6 lg:w-1/2 lg:pr-12">
+<div class="flex flex-col gap-4">
+<h1 class="text-slate-900 dark:text-white text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+                                    Order Medicines from Your Trusted Local Pharmacy
+                                </h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg md:text-xl font-normal leading-relaxed">
+                                    Upload prescriptions, track orders, manage your health — all in one place. Fast delivery from neighborhood experts.
+                                </p>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+<span>Get Started Now</span>
+</button>
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 text-base font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+<span>View Local Prices</span>
+</button>
+</div>
+<div class="flex items-center gap-4 text-sm text-slate-500">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200" data-alt="Satisfied customer profile avatar 1"></div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-300" data-alt="Satisfied customer profile avatar 2"></div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-400" data-alt="Satisfied customer profile avatar 3"></div>
+</div>
+<span>Trusted by 10,000+ happy patients</span>
+</div>
+</div>
+<div class="w-full lg:w-1/2">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl">
+<div class="aspect-video bg-cover bg-center" data-alt="Modern pharmacy interior with friendly staff" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBe9SqW0C_XttYUfoo0XfZRGTRkF5nuTzbivzmlRXQhO79v1LLrwUPNnQvJc385IZ0lMiNFOkvRi5scYp1SG_QTja2scVH54NNOes-ny4iwMqI8NMhUDuqNb4GN1tFqvLPhih_jDQxs9bD7AFs1GlIA5_fgfoBUroRGJQokSfD6WGn7uBcka4FLMdMCPAjTzm6f_djTfGDdv0ehmemsgnJiSDN8SGfB28a2UzXe9Jme_G5G27I4ynuxlYJarwFbNCC2vlkfr7jaSlA");'></div>
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Features Highlights -->
+<section class="bg-white dark:bg-background-dark py-20 px-6 lg:px-40 border-y border-slate-100 dark:border-slate-800" id="features">
+<div class="max-w-[1200px] mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black mb-4">Why PharmaBridge?</h2>
+<p class="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">Experience the future of healthcare with our comprehensive digital pharmacy services designed for your convenience.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Feature 1 -->
+<div class="group flex flex-col gap-4 p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5">
+<div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">upload_file</span>
+</div>
+<h3 class="text-slate-900 dark:text-white text-xl font-bold">Upload Prescription</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">Simply snap a photo of your prescription and upload it securely. We handle the rest.</p>
+</div>
+<!-- Feature 2 -->
+<div class="group flex flex-col gap-4 p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5">
+<div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">monitoring</span>
+</div>
+<h3 class="text-slate-900 dark:text-white text-xl font-bold">Track Orders</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">Monitor your delivery status in real-time. Know exactly when your meds will arrive.</p>
+</div>
+<!-- Feature 3 -->
+<div class="group flex flex-col gap-4 p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5">
+<div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">autorenew</span>
+</div>
+<h3 class="text-slate-900 dark:text-white text-xl font-bold">Repeat Orders</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">One-click refills and smart reminders. Never miss a dose of your regular medication.</p>
+</div>
+<!-- Feature 4 -->
+<div class="group flex flex-col gap-4 p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/5">
+<div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">local_shipping</span>
+</div>
+<h3 class="text-slate-900 dark:text-white text-xl font-bold">Home Delivery</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">Same-day delivery from your trusted neighborhood pharmacy right to your doorstep.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-20 px-6 lg:px-40" id="how-it-works">
+<div class="max-w-[1200px] mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black mb-4">How It Works</h2>
+<p class="text-slate-600 dark:text-slate-400 text-lg">Getting your medication delivered is simple and secure.</p>
+</div>
+<div class="relative">
+<!-- Connection Line -->
+<div class="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-800 -translate-y-12"></div>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12">
+<!-- Step 1 -->
+<div class="relative flex flex-col items-center text-center gap-4">
+<div class="z-10 w-16 h-16 rounded-full bg-white dark:bg-slate-800 border-4 border-primary text-primary flex items-center justify-center mb-2 shadow-lg">
+<span class="material-symbols-outlined text-3xl">person_add</span>
+</div>
+<h4 class="text-slate-900 dark:text-white font-bold text-lg">Register Account</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Create your secure profile in seconds</p>
+</div>
+<!-- Step 2 -->
+<div class="relative flex flex-col items-center text-center gap-4">
+<div class="z-10 w-16 h-16 rounded-full bg-white dark:bg-slate-800 border-4 border-primary text-primary flex items-center justify-center mb-2 shadow-lg">
+<span class="material-symbols-outlined text-3xl">add_photo_alternate</span>
+</div>
+<h4 class="text-slate-900 dark:text-white font-bold text-lg">Upload Rx</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Scan or snap your prescription document</p>
+</div>
+<!-- Step 3 -->
+<div class="relative flex flex-col items-center text-center gap-4">
+<div class="z-10 w-16 h-16 rounded-full bg-white dark:bg-slate-800 border-4 border-primary text-primary flex items-center justify-center mb-2 shadow-lg">
+<span class="material-symbols-outlined text-3xl">fact_check</span>
+</div>
+<h4 class="text-slate-900 dark:text-white font-bold text-lg">Review</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Verified by a certified local pharmacist</p>
+</div>
+<!-- Step 4 -->
+<div class="relative flex flex-col items-center text-center gap-4">
+<div class="z-10 w-16 h-16 rounded-full bg-white dark:bg-slate-800 border-4 border-primary text-primary flex items-center justify-center mb-2 shadow-lg">
+<span class="material-symbols-outlined text-3xl">payments</span>
+</div>
+<h4 class="text-slate-900 dark:text-white font-bold text-lg">Pay Securely</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Transparent pricing and secure checkout</p>
+</div>
+<!-- Step 5 -->
+<div class="relative flex flex-col items-center text-center gap-4">
+<div class="z-10 w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mb-2 shadow-lg">
+<span class="material-symbols-outlined text-3xl">moped</span>
+</div>
+<h4 class="text-slate-900 dark:text-white font-bold text-lg">Fast Delivery</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Delivered to your door same-day</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="bg-primary/5 dark:bg-primary/10 py-20 px-6 lg:px-40" id="reviews">
+<div class="max-w-[1200px] mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black mb-4">Patient Reviews</h2>
+<p class="text-slate-600 dark:text-slate-400 text-lg">Hear what our community has to say about the service.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="flex text-yellow-400 mb-4">
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-300 italic mb-6">"PharmaBridge has been a lifesaver for my elderly parents. The setup was easy and the medications always arrive exactly when expected."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">SC</div>
+<div>
+<h5 class="text-slate-900 dark:text-white font-bold text-sm">Sarah Chen</h5>
+<p class="text-slate-500 text-xs">Customer since 2022</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="flex text-yellow-400 mb-4">
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-300 italic mb-6">"I love supporting my local pharmacy while getting the convenience of a modern app. The prescription upload feature is flawlessly designed."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">MR</div>
+<div>
+<h5 class="text-slate-900 dark:text-white font-bold text-sm">Marcus Rodriguez</h5>
+<p class="text-slate-500 text-xs">Healthcare Advocate</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="flex text-yellow-400 mb-4">
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+<span class="material-symbols-outlined fill-current">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-300 italic mb-6">"Fast, reliable, and trustworthy. The pharmacist review step gives me peace of mind that I'm getting the right medication every time."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">EK</div>
+<div>
+<h5 class="text-slate-900 dark:text-white font-bold text-sm">Elena Kovic</h5>
+<p class="text-slate-500 text-xs">Frequent User</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 px-6 lg:px-40 py-12">
+<div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-4 mb-6">
+<div class="size-6 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined font-bold">medical_services</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold">PharmaBridge</h2>
+</div>
+<p class="text-slate-500 dark:text-slate-400 max-w-sm mb-6">
+                            Bridging the gap between you and your neighborhood pharmacy. Healthcare made accessible, digital, and personal.
+                        </p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">social_leaderboard</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-primary text-sm transition-colors" href="#">How It Works</a></li>
+<li><a class="text-slate-500 hover:text-primary text-sm transition-colors" href="#">Partner Pharmacies</a></li>
+<li><a class="text-slate-500 hover:text-primary text-sm transition-colors" href="#">Download App</a></li>
+<li><a class="text-slate-500 hover:text-primary text-sm transition-colors" href="#">FAQs</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold mb-6">Legal &amp; Contact</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-primary text-sm transition-colors" href="#">Terms of Service</a></li>
+<li><a class="text-slate-500 hover:text-primary text-sm transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 hover:text-primary text-sm transition-colors" href="#">HIPAA Compliance</a></li>
+<li><a class="text-slate-500 hover:text-primary text-sm transition-colors" href="#">Contact Support</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-[1200px] mx-auto border-t border-slate-100 dark:border-slate-800 mt-12 pt-8 text-center text-slate-400 text-sm">
+                    © 2024 PharmaBridge Inc. All rights reserved. Your health is our bridge to the community.
+                </div>
+</footer>
+</div>
+</div>
+</body></html>

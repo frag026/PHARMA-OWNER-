@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#0da2e7",
+                "background-light": "#f5f7f8",
+                "background-dark": "#101c22",
+              },
+              fontFamily: {
+                "display": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<title>Pharmacy Admin Dashboard</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">local_pharmacy</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-tight">PharmaAdmin</h1>
+<p class="text-xs text-slate-500">Central Hub</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary font-medium" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Customers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional pharmacist profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAluWdFjKPvzsWtMAL_wIsBkPbofrgiXXKPt6a2-4Hk8m_fWHRcgBfwTlaGQt4jbhkPmu2T8SI0azgaspH6HniAiT4_I9vxfT_t-TDaa7b_MKa4kp3YrwwT4-pucvGRqEX97lmMzV3NdUxwDn07Vv9o_DL6uJa366D4MtCWartxsQIHrU5_O-lxc2rL2Uxtd52Ek1umU4yGK3HpH0xedbc_9jpWYWFDymfqULWupZgCrex-eLmeV4I1MHD6fKRv1HxFn0ioPm06zTc"/>
+</div>
+<div>
+<p class="text-sm font-semibold">Dr. Sarah Chen</p>
+<p class="text-xs text-slate-500">Chief Pharmacist</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<header class="sticky top-0 z-10 flex items-center justify-between px-8 py-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative max-w-md w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-sm" placeholder="Search orders, medicines, or patients..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">help_outline</span>
+</button>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- KPI Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">shopping_cart</span>
+<span class="text-green-500 text-xs font-bold">+12%</span>
+</div>
+<p class="text-slate-500 text-sm font-medium">Today's Orders</p>
+<h3 class="text-2xl font-bold mt-1">128</h3>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-orange-500 p-2 bg-orange-500/10 rounded-lg">pending_actions</span>
+<span class="text-red-500 text-xs font-bold">-5%</span>
+</div>
+<p class="text-slate-500 text-sm font-medium">Pending Orders</p>
+<h3 class="text-2xl font-bold mt-1">42</h3>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-green-500 p-2 bg-green-500/10 rounded-lg">payments</span>
+<span class="text-green-500 text-xs font-bold">+18%</span>
+</div>
+<p class="text-slate-500 text-sm font-medium">Revenue Today</p>
+<h3 class="text-2xl font-bold mt-1">$2,450.00</h3>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-purple-500 p-2 bg-purple-500/10 rounded-lg">person_add</span>
+<span class="text-green-500 text-xs font-bold">+3%</span>
+</div>
+<p class="text-slate-500 text-sm font-medium">Total Customers</p>
+<h3 class="text-2xl font-bold mt-1">1,204</h3>
+</div>
+</div>
+<!-- Main Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Left Column: Chart & Activity -->
+<div class="xl:col-span-2 space-y-8">
+<!-- Order Status Chart -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-lg font-bold">Order Status Overview</h2>
+<select class="bg-slate-50 dark:bg-slate-800 border-none rounded-lg text-xs py-1 px-3">
+<option>Last 24 Hours</option>
+<option>Last 7 Days</option>
+</select>
+</div>
+<div class="flex items-end justify-between h-48 gap-4 px-4">
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg relative" style="height: 60%">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg" style="height: 100%"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-500 uppercase">Pending</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg relative" style="height: 45%">
+<div class="absolute bottom-0 w-full bg-primary/80 rounded-t-lg" style="height: 100%"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-500 uppercase">Confirmed</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg relative" style="height: 80%">
+<div class="absolute bottom-0 w-full bg-primary/70 rounded-t-lg" style="height: 100%"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-500 uppercase">Processing</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg relative" style="height: 30%">
+<div class="absolute bottom-0 w-full bg-primary/60 rounded-t-lg" style="height: 100%"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-500 uppercase">Ready</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg relative" style="height: 95%">
+<div class="absolute bottom-0 w-full bg-green-500 rounded-t-lg" style="height: 100%"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-500 uppercase">Delivered</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg relative" style="height: 15%">
+<div class="absolute bottom-0 w-full bg-red-400 rounded-t-lg" style="height: 100%"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-500 uppercase">Cancelled</span>
+</div>
+</div>
+</div>
+<!-- Live Orders Feed -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="text-lg font-bold">Live Orders</h2>
+<span class="flex h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+</div>
+<button class="text-sm text-primary font-medium hover:underline">View All Orders</button>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<div class="p-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-4">
+<div class="size-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-lg flex items-center justify-center font-bold text-xs">#9842</div>
+<div>
+<p class="text-sm font-semibold">James Anderson</p>
+<p class="text-xs text-slate-500">3 items • $124.50 • Home Delivery</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 rounded-full text-[10px] font-bold bg-orange-100 text-orange-600 dark:bg-orange-900/40 uppercase">Pending</span>
+<span class="text-xs text-slate-400">2 mins ago</span>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-4">
+<div class="size-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-lg flex items-center justify-center font-bold text-xs">#9841</div>
+<div>
+<p class="text-sm font-semibold">Elena Rodriguez</p>
+<p class="text-xs text-slate-500">1 item • $15.00 • In-store Pickup</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 rounded-full text-[10px] font-bold bg-blue-100 text-blue-600 dark:bg-blue-900/40 uppercase">Confirmed</span>
+<span class="text-xs text-slate-400">5 mins ago</span>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-4">
+<div class="size-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-lg flex items-center justify-center font-bold text-xs">#9840</div>
+<div>
+<p class="text-sm font-semibold">Robert Wilson</p>
+<p class="text-xs text-slate-500">5 items • $210.30 • Express Delivery</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 rounded-full text-[10px] font-bold bg-purple-100 text-purple-600 dark:bg-purple-900/40 uppercase">Processing</span>
+<span class="text-xs text-slate-400">12 mins ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Alerts & Activity Log -->
+<div class="space-y-8">
+<!-- Low Stock Alerts -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-red-500">warning</span>
+<h2 class="text-lg font-bold">Low Stock Alerts</h2>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 rounded-lg">
+<div>
+<p class="text-sm font-bold text-red-700 dark:text-red-400">Amoxicillin 500mg</p>
+<p class="text-xs text-red-600/70 dark:text-red-400/60">Stock: 4 units left</p>
+</div>
+<button class="text-xs font-bold text-red-700 dark:text-red-400 hover:underline">Restock</button>
+</div>
+<div class="flex items-center justify-between p-3 bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 rounded-lg">
+<div>
+<p class="text-sm font-bold text-red-700 dark:text-red-400">Lisinopril 10mg</p>
+<p class="text-xs text-red-600/70 dark:text-red-400/60">Stock: 7 units left</p>
+</div>
+<button class="text-xs font-bold text-red-700 dark:text-red-400 hover:underline">Restock</button>
+</div>
+<div class="flex items-center justify-between p-3 bg-orange-50 dark:bg-orange-900/10 border border-orange-100 dark:border-orange-900/20 rounded-lg">
+<div>
+<p class="text-sm font-bold text-orange-700 dark:text-orange-400">Lipitor 20mg</p>
+<p class="text-xs text-orange-600/70 dark:text-orange-400/60">Stock: 9 units left</p>
+</div>
+<button class="text-xs font-bold text-orange-700 dark:text-orange-400 hover:underline">Restock</button>
+</div>
+</div>
+</div>
+<!-- Recent Activity Log -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h2 class="text-lg font-bold mb-6">Recent Activity</h2>
+<div class="relative space-y-6 before:absolute before:left-[11px] before:top-2 before:h-[calc(100%-16px)] before:w-px before:bg-slate-100 dark:before:bg-slate-800">
+<div class="relative pl-8">
+<span class="absolute left-0 top-1 size-6 rounded-full bg-blue-100 dark:bg-blue-900/40 border-4 border-white dark:border-slate-900 flex items-center justify-center">
+<span class="size-1.5 rounded-full bg-blue-600"></span>
+</span>
+<p class="text-sm text-slate-700 dark:text-slate-300">Order <span class="font-bold">#9842</span> was confirmed</p>
+<p class="text-[10px] text-slate-400 mt-1">10:45 AM • Dr. Sarah Chen</p>
+</div>
+<div class="relative pl-8">
+<span class="absolute left-0 top-1 size-6 rounded-full bg-slate-100 dark:bg-slate-800 border-4 border-white dark:border-slate-900 flex items-center justify-center">
+<span class="size-1.5 rounded-full bg-slate-400"></span>
+</span>
+<p class="text-sm text-slate-700 dark:text-slate-300">Inventory updated: <span class="font-bold">Metformin</span></p>
+<p class="text-[10px] text-slate-400 mt-1">10:30 AM • Mark (Stock Manager)</p>
+</div>
+<div class="relative pl-8">
+<span class="absolute left-0 top-1 size-6 rounded-full bg-green-100 dark:bg-green-900/40 border-4 border-white dark:border-slate-900 flex items-center justify-center">
+<span class="size-1.5 rounded-full bg-green-600"></span>
+</span>
+<p class="text-sm text-slate-700 dark:text-slate-300">New customer registered: <span class="font-bold">Linda Gray</span></p>
+<p class="text-[10px] text-slate-400 mt-1">10:15 AM • System</p>
+</div>
+<div class="relative pl-8">
+<span class="absolute left-0 top-1 size-6 rounded-full bg-red-100 dark:bg-red-900/40 border-4 border-white dark:border-slate-900 flex items-center justify-center">
+<span class="size-1.5 rounded-full bg-red-600"></span>
+</span>
+<p class="text-sm text-slate-700 dark:text-slate-300">Order <span class="font-bold">#9835</span> was cancelled</p>
+<p class="text-[10px] text-slate-400 mt-1">09:50 AM • Dr. Sarah Chen</p>
+</div>
+<div class="relative pl-8">
+<span class="absolute left-0 top-1 size-6 rounded-full bg-slate-100 dark:bg-slate-800 border-4 border-white dark:border-slate-900 flex items-center justify-center">
+<span class="size-1.5 rounded-full bg-slate-400"></span>
+</span>
+<p class="text-sm text-slate-700 dark:text-slate-300">Generated Monthly Revenue Report</p>
+<p class="text-[10px] text-slate-400 mt-1">09:00 AM • System</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
