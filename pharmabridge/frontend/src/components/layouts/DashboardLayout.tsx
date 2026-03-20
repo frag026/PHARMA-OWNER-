@@ -15,10 +15,10 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
       <Navbar />
       <div className="flex flex-1 overflow-hidden">
         {/* Dynamic Sidebar based on role */}
-        <Sidebar role={user?.role || 'PHARMACY_ADMIN'} />
+        <Sidebar role={(user?.role as 'ADMIN' | 'PHARMACY' | 'CUSTOMER' | 'DRIVER' | 'PHARMACY_ADMIN') || 'CUSTOMER'} />
         
-        <main className="flex-1 overflow-y-auto p-4 md:p-8 lg:p-12">
-          <div className="mx-auto max-w-7xl w-full">
+        <main className="flex-1 overflow-y-auto bg-[#f5f7f8] dark:bg-[#101c22]">
+          <div className="h-full">
             {children}
           </div>
         </main>

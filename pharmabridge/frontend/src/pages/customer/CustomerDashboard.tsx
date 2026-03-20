@@ -1,196 +1,163 @@
 import React from 'react';
 import { DashboardLayout } from '../../components/layouts/DashboardLayout';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../../components/ui/Card';
-import { Button } from '../../components/ui/Button';
-import { Badge } from '../../components/ui/Badge';
-import { 
-  PlusCircle, 
-  Search, 
-  Clock, 
-  ArrowRight,
-  TrendingUp,
-  AlertCircle
-} from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
+import { Link } from 'react-router-dom';
 
 const CustomerDashboard: React.FC = () => {
   const { user } = useAuthStore();
 
   return (
     <DashboardLayout>
-      <div className="space-y-8">
-        {/* Welcome Section */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white">
-              Welcome back, <span className="text-primary">{user?.name.split(' ')[0]}!</span>
-            </h1>
-            <p className="text-slate-500 mt-1 font-medium">Here's what's happening with your medical status today.</p>
+      <div className="flex flex-col gap-6 p-6 lg:p-10 transition-all">
+        {/* Header / Search */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 overflow-hidden border-2 border-white dark:border-slate-700 shadow-sm">
+              <span className="material-symbols-outlined text-3xl">person</span>
+            </div>
+            <div>
+              <h1 className="text-2xl font-black tracking-tight">Good morning, {user?.name.split(' ')[0]}</h1>
+              <p className="text-slate-500 text-sm font-medium">May your health stay bright today.</p>
+            </div>
           </div>
-          <div className="flex gap-3">
-            <Link to="/search">
-              <Button className="h-12 shadow-md shadow-primary/20 gap-2 pr-6">
-                 <PlusCircle className="h-5 w-5" /> New Order
-              </Button>
-            </Link>
+          <div className="relative w-full md:w-96">
+            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+            <input 
+              type="text" 
+              placeholder="Search medicines or symptoms..." 
+              className="w-full pl-12 pr-4 py-3.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm focus:ring-2 focus:ring-[#0da2e7] outline-none transition-all placeholder:text-slate-400"
+            />
           </div>
         </div>
 
-        {/* Status Alerts */}
-        <div className="rounded-2xl border-2 border-primary/20 bg-primary/5 p-6 dark:bg-primary/10">
-           <div className="flex items-start gap-4">
-              <div className="rounded-xl bg-primary/20 p-2 text-primary">
-                 <TrendingUp className="h-6 w-6" />
-              </div>
-              <div className="flex-1">
-                 <p className="text-sm font-bold text-primary uppercase tracking-wider mb-1">Live Order Status</p>
-                 <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">Order #PB-8273 is being processed</h3>
-                 <p className="text-slate-600 dark:text-slate-400 mt-1 max-w-2xl">Your medicines are being packed at Apollo Pharmacy. You'll receive a notification once the delivery partner picks it up.</p>
-                 <div className="mt-4 flex items-center gap-4">
-                    <div className="h-1.5 flex-1 bg-slate-200 rounded-full overflow-hidden dark:bg-slate-800">
-                       <div className="h-full w-2/3 bg-primary rounded-full" />
+        {/* Active Order Banner */}
+        <div className="bg-[#0da2e7] rounded-3xl p-6 text-white shadow-xl shadow-[#0da2e7]/20 relative overflow-hidden group">
+          <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
+            <span className="material-symbols-outlined text-9xl">moped</span>
+          </div>
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 bg-white/20 w-max px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Live Delivery</div>
+              <h2 className="text-2xl font-black">Your medicines are on the way!</h2>
+              <p className="text-white/80 text-sm max-w-lg">Order #PB-1024 from Apollo Pharmacy is currently being delivered by our partner John Doe.</p>
+            </div>
+            <button className="bg-white text-[#0da2e7] px-8 py-3 rounded-xl font-bold text-sm shadow-lg hover:bg-slate-50 transition-colors whitespace-nowrap">Track Order</button>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Main Content Area */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Quick Actions */}
+            <div>
+              <h3 className="text-lg font-black mb-4 flex items-center gap-2">
+                <span className="material-symbols-outlined text-[#0da2e7]">bolt</span> Quick Actions
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { label: 'Upload Rx', icon: 'upload_file', color: 'bg-blue-50 text-blue-600' },
+                  { label: 'Repeat', icon: 'autorenew', color: 'bg-emerald-50 text-emerald-600' },
+                  { label: 'Consult', icon: 'chat', color: 'bg-orange-50 text-orange-600' },
+                  { label: 'History', icon: 'history', color: 'bg-purple-50 text-purple-600' },
+                ].map((action) => (
+                  <button key={action.label} className="flex flex-col items-center justify-center p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-all group">
+                    <div className={`${action.color} w-12 h-12 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
+                      <span className="material-symbols-outlined">{action.icon}</span>
                     </div>
-                    <span className="text-sm font-bold text-primary">60% Complete</span>
-                 </div>
+                    <span className="text-xs font-bold text-slate-700 dark:text-slate-300">{action.label}</span>
+                  </button>
+                ))}
               </div>
-              <Link to="/customer/orders/PB-8273">
-                <Button size="sm" variant="outline" className="hidden sm:flex">Track Order</Button>
-              </Link>
-           </div>
-        </div>
+            </div>
 
-        {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-           <Card className="card-hover">
-              <CardHeader>
-                 <div className="mb-2 h-10 w-10 flex items-center justify-center rounded-xl bg-orange-100 text-orange-600">
-                    <Search className="h-5 w-5" />
-                 </div>
-                 <CardTitle className="text-lg">Find Medicine</CardTitle>
-                 <CardDescription className="text-sm">Search the entire catalog of partner stores</CardDescription>
-              </CardHeader>
-              <CardFooter>
-                 <Button variant="ghost" className="w-full text-sm font-bold opacity-70 group-hover:opacity-100">Browse Catalog</Button>
-              </CardFooter>
-           </Card>
-
-           <Card className="card-hover">
-              <CardHeader>
-                 <div className="mb-2 h-10 w-10 flex items-center justify-center rounded-xl bg-emerald-100 text-emerald-600">
-                    <PlusCircle className="h-5 w-5" />
-                 </div>
-                 <CardTitle className="text-lg">Rapid Reorder</CardTitle>
-                 <CardDescription className="text-sm">Reorder your frequent medicines in 2 clicks</CardDescription>
-              </CardHeader>
-              <CardFooter>
-                 <Button variant="ghost" className="w-full text-sm font-bold opacity-70 group-hover:opacity-100">View Favourites</Button>
-              </CardFooter>
-           </Card>
-
-           <Card className="card-hover">
-              <CardHeader>
-                 <div className="mb-2 h-10 w-10 flex items-center justify-center rounded-xl bg-blue-100 text-blue-600">
-                    <Clock className="h-5 w-5" />
-                 </div>
-                 <CardTitle className="text-lg">Health Records</CardTitle>
-                 <CardDescription className="text-sm">Access your previous bills and digitised records</CardDescription>
-              </CardHeader>
-              <CardFooter>
-                 <Button variant="ghost" className="w-full text-sm font-bold opacity-70 group-hover:opacity-100">Open History</Button>
-              </CardFooter>
-           </Card>
-
-           <Card className="card-hover">
-              <CardHeader>
-                 <div className="mb-2 h-10 w-10 flex items-center justify-center rounded-xl bg-indigo-100 text-indigo-600">
-                    <AlertCircle className="h-5 w-5" />
-                 </div>
-                 <CardTitle className="text-lg">Support Center</CardTitle>
-                 <CardDescription className="text-sm">Talk to a pharmacist or file a return/report</CardDescription>
-              </CardHeader>
-              <CardFooter>
-                 <Button variant="ghost" className="w-full text-sm font-bold opacity-70 group-hover:opacity-100">Help Center</Button>
-              </CardFooter>
-           </Card>
-        </div>
-
-        {/* Tables/Lists */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-           <div className="lg:col-span-8 space-y-6">
-              <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold">Recent Orders</h2>
-                <Link to="/customer/orders" className="text-sm font-bold text-primary hover:underline flex items-center gap-1">View All <ArrowRight className="h-4 w-4" /></Link>
+            {/* Recent Orders */}
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-black tracking-tight">Recent Orders</h3>
+                <Link to="/customer/orders" className="text-[#0da2e7] text-xs font-bold hover:underline">View All</Link>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden dark:border-slate-800 dark:bg-slate-950">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden">
                 <table className="w-full text-left">
-                  <thead className="bg-slate-50 border-b border-slate-200 dark:bg-slate-900/50 dark:border-slate-800">
+                  <thead className="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-100 dark:border-slate-800">
                     <tr>
-                      <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Order ID</th>
-                      <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Pharmacy</th>
-                      <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Amount</th>
-                      <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
-                      <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Action</th>
+                      <th className="px-6 py-4 text-[10px] font-black uppercase text-slate-400 tracking-widest">Order ID</th>
+                      <th className="px-6 py-4 text-[10px] font-black uppercase text-slate-400 tracking-widest">Items</th>
+                      <th className="px-6 py-4 text-[10px] font-black uppercase text-slate-400 tracking-widest">Status</th>
+                      <th className="px-6 py-4 text-[10px] font-black uppercase text-slate-400 tracking-widest text-right">Price</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
+                  <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
                     {[
-                      { id: 'PB-8273', pharmacy: 'Apollo Pharmacy', amount: '₹1,240', status: 'PROCESSING', statusVariant: 'warning' as const },
-                      { id: 'PB-7192', pharmacy: 'MedPlus Store', amount: '₹450', status: 'DELIVERED', statusVariant: 'success' as const },
-                      { id: 'PB-6628', pharmacy: 'Apollo Pharmacy', amount: '₹890', status: 'DELIVERED', statusVariant: 'success' as const },
-                      { id: 'PB-5501', pharmacy: 'City Pharma', amount: '₹2,100', status: 'CANCELLED', statusVariant: 'destructive' as const },
+                      { id: '#PB-1024', items: 'Dolo 650, Benadryl', status: 'Delivering', color: 'text-blue-500', price: '₹145.00' },
+                      { id: '#PB-0982', items: 'Metformin 500mg', status: 'Completed', color: 'text-emerald-500', price: '₹420.00' },
+                      { id: '#PB-0911', items: 'Amoxicillin 250mg', status: 'Completed', color: 'text-emerald-500', price: '₹85.00' },
                     ].map((order) => (
-                      <tr key={order.id} className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                      <tr key={order.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer">
+                        <td className="px-6 py-4 text-xs font-bold">{order.id}</td>
+                        <td className="px-6 py-4 text-xs font-medium text-slate-600 dark:text-slate-400">{order.items}</td>
                         <td className="px-6 py-4">
-                          <p className="text-sm font-bold text-slate-900 dark:text-white">{order.id}</p>
-                          <p className="text-xs text-slate-500">12 Mar 2026</p>
+                          <span className={`text-[10px] font-black uppercase tracking-widest ${order.color}`}>{order.status}</span>
                         </td>
-                        <td className="px-6 py-4 font-medium text-sm">{order.pharmacy}</td>
-                        <td className="px-6 py-4 font-bold text-sm">{order.amount}</td>
-                        <td className="px-6 py-4">
-                          <Badge variant={order.statusVariant}>{order.status}</Badge>
-                        </td>
-                        <td className="px-6 py-4 text-right">
-                          <Button size="sm" variant="ghost" className="text-xs font-bold">Details</Button>
-                        </td>
+                        <td className="px-6 py-4 text-right text-xs font-black">{order.price}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-           </div>
+            </div>
+          </div>
 
-           <div className="lg:col-span-4 flex flex-col gap-8">
-              <div className="flex flex-col gap-6">
-                <h2 className="text-2xl font-bold">Quick Reorder</h2>
-                <Card className="bg-primary/5 border-primary/20">
-                  <CardHeader>
-                    <CardTitle className="text-lg">Paracetamol 500mg</CardTitle>
-                    <CardDescription>Commonly ordered from Apollo</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex justify-between items-center">
-                    <p className="text-2xl font-extrabold text-primary">₹12.00</p>
-                    <Button size="sm">Add to Cart</Button>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg">Metformin 500mg</CardTitle>
-                    <CardDescription>Monthly chronic med reorder</CardDescription>
-                  </CardHeader>
-                  <CardFooter>
-                    <Button size="sm" variant="outline" className="w-full">Reorder All Chronic</Button>
-                  </CardFooter>
-                </Card>
+          {/* Right Sidebar */}
+          <div className="space-y-8">
+            {/* Primary Pharmacy Card */}
+            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 space-y-4">
+              <h4 className="text-[10px] font-black uppercase tracking-widest text-[#0da2e7]">Primary Pharmacy</h4>
+              <div className="flex items-center gap-4">
+                <div className="w-16 h-16 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                  <span className="material-symbols-outlined text-3xl">local_pharmacy</span>
+                </div>
+                <div>
+                  <h5 className="font-black text-lg">Apollo Pharmacy</h5>
+                  <p className="text-slate-400 text-xs font-medium flex items-center gap-1">
+                    <span className="material-symbols-outlined text-xs">location_on</span> 0.4 km away
+                  </p>
+                </div>
               </div>
+              <div className="flex flex-col gap-2 pt-2">
+                <div className="flex items-center justify-between text-xs font-bold">
+                  <span className="text-slate-400">Response Time</span>
+                  <span className="text-emerald-500">~15 mins</span>
+                </div>
+                <div className="flex items-center justify-between text-xs font-bold">
+                  <span className="text-slate-400">Total Orders</span>
+                  <span>42 Orders</span>
+                </div>
+              </div>
+              <button className="w-full py-3 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white rounded-xl text-xs font-black hover:bg-slate-100 transition-colors">Call Pharmacist</button>
+            </div>
 
-              <div className="rounded-2xl bg-slate-900 p-6 text-white overflow-hidden relative">
-                 <div className="absolute top-0 right-0 h-32 w-32 bg-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                 <h3 className="text-xl font-bold mb-2">Bridge Plus</h3>
-                 <p className="text-sm font-medium opacity-80 mb-6">Unlock free delivery on all orders above ₹200.</p>
-                 <Button className="bg-white text-slate-900 hover:bg-white/90 w-full h-10 font-bold">Upgrade Now</Button>
+            {/* Health Stats */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-black tracking-tight">Your Health Bridge</h3>
+              <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 overflow-hidden relative">
+                <div className="absolute -bottom-4 -right-4 opacity-5 rotate-12">
+                   <span className="material-symbols-outlined text-8xl">monitoring</span>
+                </div>
+                <div className="flex flex-col gap-6">
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <p className="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-1">Medication Adherence</p>
+                      <h4 className="text-3xl font-black text-[#0da2e7]">92%</h4>
+                    </div>
+                    <div className="h-2 w-24 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden mb-2">
+                      <div className="h-full w-[92%] bg-[#0da2e7]"></div>
+                    </div>
+                  </div>
+                  <p className="text-xs text-slate-500 leading-relaxed">You've missed only 2 doses this month. Your next refill for Metformin is in 4 days.</p>
+                </div>
               </div>
-           </div>
+            </div>
+          </div>
         </div>
       </div>
     </DashboardLayout>

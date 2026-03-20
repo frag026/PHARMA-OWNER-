@@ -1,302 +1,295 @@
 import React from 'react';
-import { Navbar } from '../components/common/Navbar';
-import { Button } from '../components/ui/Button';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../components/ui/Card';
-import { Badge } from '../components/ui/Badge';
-import { 
-  PlusCircle, 
-  Search, 
-  Truck, 
-  ShieldCheck, 
-  MessageSquare, 
-  History, 
-  ArrowRight,
-  Stethoscope,
-  Pill,
-  Clock,
-  MapPin
-} from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const LandingPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
-      <Navbar />
-      
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-white py-20 dark:bg-slate-950 sm:py-32">
-        <div className="absolute inset-0 -z-10 overflow-hidden">
-          <svg className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-slate-200 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)] dark:stroke-slate-800" aria-hidden="true">
-            <defs>
-              <pattern id="e813992c-7d03-4cc4-a2bd-21d7abd49fcd" width="200" height="200" x="50%" y="-1" patternUnits="userSpaceOnUse">
-                <path d="M100 200V.5M.5 .5H200" fill="none" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" strokeWidth="0" fill="url(#e813992c-7d03-4cc4-a2bd-21d7abd49fcd)" />
-          </svg>
-        </div>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-            <div className="sm:text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:text-left">
-              <h1>
-                <Badge variant="info" className="mb-4 py-1 px-3 text-sm">Now serving 500+ local pharmacies</Badge>
-                <span className="block text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl md:text-6xl">
-                  Medicine delivery from <span className="text-primary">Your Local Pharmacy</span>
-                </span>
-              </h1>
-              <p className="mt-3 text-base text-slate-500 dark:text-slate-400 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                PharmaBridge connects you directly with pharmacies in your neighborhood. Get genuine medicines, prescription verification, and real-time order tracking.
+    <div className="relative flex min-h-screen flex-col overflow-x-hidden font-display bg-[#f5f7f8] dark:bg-[#101c22] text-slate-900 dark:text-slate-100">
+      <div className="layout-container flex h-full grow flex-col">
+        {/* TopNavBar */}
+        <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 py-3 lg:px-40 bg-white dark:bg-[#101c22] sticky top-0 z-50">
+          <Link to="/" className="flex items-center gap-4">
+            <div className="size-8 text-[#0da2e7] flex items-center justify-center">
+              <span className="material-symbols-outlined text-3xl font-bold">medical_services</span>
+            </div>
+            <h2 className="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">PharmaBridge</h2>
+          </Link>
+          <div className="flex flex-1 justify-end gap-8">
+            <div className="hidden md:flex items-center gap-9">
+              <a className="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-[#0da2e7] transition-colors" href="#how-it-works">How It Works</a>
+              <a className="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-[#0da2e7] transition-colors" href="#features">Features</a>
+              <a className="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-[#0da2e7] transition-colors" href="#reviews">Reviews</a>
+            </div>
+            <div className="flex gap-2">
+              <Link to="/register">
+                <button className="flex min-w-[84px] cursor-pointer items-center justify-center rounded-xl h-10 px-4 bg-[#0da2e7] text-white text-sm font-bold tracking-wide hover:opacity-90 transition-opacity">
+                  <span>Get Started</span>
+                </button>
+              </Link>
+              <Link to="/login">
+                <button className="flex min-w-[84px] cursor-pointer items-center justify-center rounded-xl h-10 px-4 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                  <span>Login</span>
+                </button>
+              </Link>
+            </div>
+          </div>
+        </header>
+
+        <main className="flex-1">
+          {/* Hero Section */}
+          <div className="px-6 lg:px-40 py-12 md:py-20">
+            <div className="flex flex-col gap-8 lg:flex-row items-center">
+              <div className="flex flex-col gap-6 lg:w-1/2 lg:pr-12">
+                <div className="flex flex-col gap-4">
+                  <h1 className="text-slate-900 dark:text-white text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+                    Order Medicines from Your Trusted Local Pharmacy
+                  </h1>
+                  <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl font-normal leading-relaxed">
+                    Upload prescriptions, track orders, manage your health — all in one place. Fast delivery from neighborhood experts.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-4">
+                  <Link to="/register">
+                    <button className="flex min-w-[160px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-[#0da2e7] text-white text-base font-bold shadow-lg shadow-[#0da2e7]/20 hover:scale-105 transition-transform">
+                      <span>Get Started Now</span>
+                    </button>
+                  </Link>
+                  <Link to="/search">
+                    <button className="flex min-w-[160px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 text-base font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                      <span>View Local Prices</span>
+                    </button>
+                  </Link>
+                </div>
+                <div className="flex items-center gap-4 text-sm text-slate-500">
+                  <div className="flex -space-x-2">
+                    <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-200"></div>
+                    <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-300"></div>
+                    <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-400"></div>
+                  </div>
+                  <span>Trusted by 10,000+ happy patients</span>
+                </div>
+              </div>
+              <div className="w-full lg:w-1/2">
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <div 
+                    className="aspect-video bg-cover bg-center" 
+                    style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBe9SqW0C_XttYUfoo0XfZRGTRkF5nuTzbivzmlRXQhO79v1LLrwUPNnQvJc385IZ0lMiNFOkvRi5scYp1SG_QTja2scVH54NNOes-ny4iwMqI8NMhUDuqNb4GN1tFqvLPhih_jDQxs9bD7AFs1GlIA5_fgfoBUroRGJQokSfD6WGn7uBcka4FLMdMCPAjTzm6f_djTfGDdv0ehmemsgnJiSDN8SGfB28a2UzXe9Jme_G5G27I4ynuxlYJarwFbNCC2vlkfr7jaSlA")' }}
+                  ></div>
+                  <div className="absolute inset-0 bg-[#0da2e7]/10 mix-blend-multiply"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Features Highlights */}
+          <section className="bg-white dark:bg-[#101c22] py-20 px-6 lg:px-40 border-y border-slate-100 dark:border-slate-800" id="features">
+            <div className="max-w-[1200px] mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-slate-900 dark:text-white text-3xl md:text-4xl font-black mb-4">Why PharmaBridge?</h2>
+                <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">Experience the future of healthcare with our comprehensive digital pharmacy services designed for your convenience.</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Feature 1 */}
+                <div className="group flex flex-col gap-4 p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-[#0da2e7]/50 transition-all hover:shadow-xl hover:shadow-[#0da2e7]/5">
+                  <div className="w-12 h-12 rounded-xl bg-[#0da2e7]/10 text-[#0da2e7] flex items-center justify-center group-hover:bg-[#0da2e7] group-hover:text-white transition-colors">
+                    <span className="material-symbols-outlined text-2xl">upload_file</span>
+                  </div>
+                  <h3 className="text-slate-900 dark:text-white text-xl font-bold">Upload Prescription</h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Simply snap a photo of your prescription and upload it securely. We handle the rest.</p>
+                </div>
+                {/* Feature 2 */}
+                <div className="group flex flex-col gap-4 p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-[#0da2e7]/50 transition-all hover:shadow-xl hover:shadow-[#0da2e7]/5">
+                  <div className="w-12 h-12 rounded-xl bg-[#0da2e7]/10 text-[#0da2e7] flex items-center justify-center group-hover:bg-[#0da2e7] group-hover:text-white transition-colors">
+                    <span className="material-symbols-outlined text-2xl">monitoring</span>
+                  </div>
+                  <h3 className="text-slate-900 dark:text-white text-xl font-bold">Track Orders</h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Monitor your delivery status in real-time. Know exactly when your meds will arrive.</p>
+                </div>
+                {/* Feature 3 */}
+                <div className="group flex flex-col gap-4 p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-[#0da2e7]/50 transition-all hover:shadow-xl hover:shadow-[#0da2e7]/5">
+                  <div className="w-12 h-12 rounded-xl bg-[#0da2e7]/10 text-[#0da2e7] flex items-center justify-center group-hover:bg-[#0da2e7] group-hover:text-white transition-colors">
+                    <span className="material-symbols-outlined text-2xl">autorenew</span>
+                  </div>
+                  <h3 className="text-slate-900 dark:text-white text-xl font-bold">Repeat Orders</h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">One-click refills and smart reminders. Never miss a dose of your regular medication.</p>
+                </div>
+                {/* Feature 4 */}
+                <div className="group flex flex-col gap-4 p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:border-[#0da2e7]/50 transition-all hover:shadow-xl hover:shadow-[#0da2e7]/5">
+                  <div className="w-12 h-12 rounded-xl bg-[#0da2e7]/10 text-[#0da2e7] flex items-center justify-center group-hover:bg-[#0da2e7] group-hover:text-white transition-colors">
+                    <span className="material-symbols-outlined text-2xl">local_shipping</span>
+                  </div>
+                  <h3 className="text-slate-900 dark:text-white text-xl font-bold">Home Delivery</h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Same-day delivery from your trusted neighborhood pharmacy right to your doorstep.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* How It Works */}
+          <section className="py-20 px-6 lg:px-40" id="how-it-works">
+            <div className="max-w-[1200px] mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-slate-900 dark:text-white text-3xl md:text-4xl font-black mb-4">How It Works</h2>
+                <p className="text-slate-600 dark:text-slate-400 text-lg">Getting your medication delivered is simple and secure.</p>
+              </div>
+              <div className="relative">
+                {/* Connection Line */}
+                <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-800 -translate-y-12"></div>
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12">
+                  {/* Step 1 */}
+                  <div className="relative flex flex-col items-center text-center gap-4">
+                    <div className="z-10 w-16 h-16 rounded-full bg-white dark:bg-slate-800 border-4 border-[#0da2e7] text-[#0da2e7] flex items-center justify-center mb-2 shadow-lg">
+                      <span className="material-symbols-outlined text-3xl">person_add</span>
+                    </div>
+                    <h4 className="text-slate-900 dark:text-white font-bold text-lg">Register Account</h4>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm">Create your secure profile in seconds</p>
+                  </div>
+                  {/* Step 2 */}
+                  <div className="relative flex flex-col items-center text-center gap-4">
+                    <div className="z-10 w-16 h-16 rounded-full bg-white dark:bg-slate-800 border-4 border-[#0da2e7] text-[#0da2e7] flex items-center justify-center mb-2 shadow-lg">
+                      <span className="material-symbols-outlined text-3xl">add_photo_alternate</span>
+                    </div>
+                    <h4 className="text-slate-900 dark:text-white font-bold text-lg">Upload Rx</h4>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm">Scan or snap your prescription document</p>
+                  </div>
+                  {/* Step 3 */}
+                  <div className="relative flex flex-col items-center text-center gap-4">
+                    <div className="z-10 w-16 h-16 rounded-full bg-white dark:bg-slate-800 border-4 border-[#0da2e7] text-[#0da2e7] flex items-center justify-center mb-2 shadow-lg">
+                      <span className="material-symbols-outlined text-3xl">fact_check</span>
+                    </div>
+                    <h4 className="text-slate-900 dark:text-white font-bold text-lg">Review</h4>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm">Verified by a certified local pharmacist</p>
+                  </div>
+                  {/* Step 4 */}
+                  <div className="relative flex flex-col items-center text-center gap-4">
+                    <div className="z-10 w-16 h-16 rounded-full bg-white dark:bg-slate-800 border-4 border-[#0da2e7] text-[#0da2e7] flex items-center justify-center mb-2 shadow-lg">
+                      <span className="material-symbols-outlined text-3xl">payments</span>
+                    </div>
+                    <h4 className="text-slate-900 dark:text-white font-bold text-lg">Pay Securely</h4>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm">Transparent pricing and secure checkout</p>
+                  </div>
+                  {/* Step 5 */}
+                  <div className="relative flex flex-col items-center text-center gap-4">
+                    <div className="z-10 w-16 h-16 rounded-full bg-[#0da2e7] text-white flex items-center justify-center mb-2 shadow-lg">
+                      <span className="material-symbols-outlined text-3xl">moped</span>
+                    </div>
+                    <h4 className="text-slate-900 dark:text-white font-bold text-lg">Fast Delivery</h4>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm">Delivered to your door same-day</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Testimonials */}
+          <section className="bg-[#0da2e7]/5 dark:bg-[#0da2e7]/10 py-20 px-6 lg:px-40" id="reviews">
+            <div className="max-w-[1200px] mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-slate-900 dark:text-white text-3xl md:text-4xl font-black mb-4">Patient Reviews</h2>
+                <p className="text-slate-600 dark:text-slate-400 text-lg">Hear what our community has to say about the service.</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Testimonial 1 */}
+                <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                  <div className="flex text-yellow-400 mb-4">
+                    <span className="material-symbols-outlined fill-current">star</span>
+                    <span className="material-symbols-outlined fill-current">star</span>
+                    <span className="material-symbols-outlined fill-current">star</span>
+                    <span className="material-symbols-outlined fill-current">star</span>
+                    <span className="material-symbols-outlined fill-current">star</span>
+                  </div>
+                  <p className="text-slate-600 dark:text-slate-300 italic mb-6">"PharmaBridge has been a lifesaver for my elderly parents. The setup was easy and the medications always arrive exactly when expected."</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#0da2e7]/20 flex items-center justify-center text-[#0da2e7] font-bold">SC</div>
+                    <div>
+                      <h5 className="text-slate-900 dark:text-white font-bold text-sm">Sarah Chen</h5>
+                      <p className="text-slate-500 text-xs">Customer since 2022</p>
+                    </div>
+                  </div>
+                </div>
+                {/* Testimonial 2 */}
+                <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                  <div className="flex text-yellow-400 mb-4">
+                    <span className="material-symbols-outlined fill-current">star</span>
+                    <span className="material-symbols-outlined fill-current">star</span>
+                    <span className="material-symbols-outlined fill-current">star</span>
+                    <span className="material-symbols-outlined fill-current">star</span>
+                    <span className="material-symbols-outlined fill-current">star</span>
+                  </div>
+                  <p className="text-slate-600 dark:text-slate-300 italic mb-6">"I love supporting my local pharmacy while getting the convenience of a modern app. The prescription upload feature is flawlessly designed."</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#0da2e7]/20 flex items-center justify-center text-[#0da2e7] font-bold">MR</div>
+                    <div>
+                      <h5 className="text-slate-900 dark:text-white font-bold text-sm">Marcus Rodriguez</h5>
+                      <p className="text-slate-500 text-xs">Healthcare Advocate</p>
+                    </div>
+                  </div>
+                </div>
+                {/* Testimonial 3 */}
+                <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                  <div className="flex text-yellow-400 mb-4">
+                    <span className="material-symbols-outlined fill-current">star</span>
+                    <span className="material-symbols-outlined fill-current">star</span>
+                    <span className="material-symbols-outlined fill-current">star</span>
+                    <span className="material-symbols-outlined fill-current">star</span>
+                    <span className="material-symbols-outlined fill-current">star</span>
+                  </div>
+                  <p className="text-slate-600 dark:text-slate-300 italic mb-6">"Fast, reliable, and trustworthy. The pharmacist review step gives me peace of mind that I'm getting the right medication every time."</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#0da2e7]/20 flex items-center justify-center text-[#0da2e7] font-bold">EK</div>
+                    <div>
+                      <h5 className="text-slate-900 dark:text-white font-bold text-sm">Elena Kovic</h5>
+                      <p className="text-slate-500 text-xs">Frequent User</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        {/* Footer */}
+        <footer className="bg-white dark:bg-[#101c22] border-t border-slate-200 dark:border-slate-800 px-6 lg:px-40 py-12">
+          <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="size-6 text-[#0da2e7] flex items-center justify-center">
+                  <span className="material-symbols-outlined font-bold">medical_services</span>
+                </div>
+                <h2 className="text-slate-900 dark:text-slate-100 text-lg font-bold">PharmaBridge</h2>
+              </div>
+              <p className="text-slate-500 dark:text-slate-400 max-w-sm mb-6">
+                Bridging the gap between you and your neighborhood pharmacy. Healthcare made accessible, digital, and personal.
               </p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
-                <Link to="/register">
-                  <Button size="lg" className="h-14 px-8 text-lg font-bold shadow-lg shadow-primary/20">
-                    Order Now <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-                <Link to="/pharmacy-partner">
-                  <Button size="lg" variant="outline" className="h-14 px-8 text-lg font-bold">
-                    For Pharmacies
-                  </Button>
-                </Link>
-              </div>
-              <div className="mt-8 flex items-center gap-6 justify-center lg:justify-start">
-                <div className="flex -space-x-2">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="h-10 w-10 rounded-full border-2 border-white bg-slate-200 dark:border-slate-800" />
-                  ))}
-                </div>
-                <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
-                  Joined by <span className="text-slate-900 dark:text-white">10,000+ happy customers</span> this month
-                </p>
+              <div className="flex gap-4">
+                <a className="text-slate-400 hover:text-[#0da2e7]" href="#"><span className="material-symbols-outlined">social_leaderboard</span></a>
+                <a className="text-slate-400 hover:text-[#0da2e7]" href="#"><span className="material-symbols-outlined">share</span></a>
+                <a className="text-slate-400 hover:text-[#0da2e7]" href="#"><span className="material-symbols-outlined">alternate_email</span></a>
               </div>
             </div>
-            <div className="relative mt-12 sm:mx-auto sm:max-w-lg lg:col-span-6 lg:mx-0 lg:mt-0 lg:flex lg:items-center">
-              <div className="relative mx-auto w-full max-w-[500px]">
-                <div className="rounded-2xl bg-white p-2 shadow-2xl ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
-                   <div className="overflow-hidden rounded-xl bg-slate-50 dark:bg-slate-950 aspect-[4/3] flex items-center justify-center p-8">
-                     <div className="text-center">
-                        <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 text-primary">
-                          <Stethoscope className="h-10 w-10" />
-                        </div>
-                        <h3 className="text-xl font-bold">Fast & Reliable</h3>
-                        <p className="text-sm text-slate-500">Connecting Patients and Pharmacists seamlessly.</p>
-                     </div>
-                   </div>
-                </div>
-                <div className="absolute -bottom-6 -left-6 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-slate-100 dark:bg-slate-900 dark:ring-slate-800 md:block">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-                      <ShieldCheck className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold text-slate-500">100% Genuine</p>
-                      <p className="text-sm font-bold">Verified Stores</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute -right-6 -top-6 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-slate-100 dark:bg-slate-900 dark:ring-slate-800 md:block">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
-                      <Clock className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold text-slate-500">Fast Express</p>
-                      <p className="text-sm font-bold">30 Min Delivery</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div>
+              <h4 className="text-slate-900 dark:text-white font-bold mb-6">Quick Links</h4>
+              <ul className="space-y-4">
+                <li><a className="text-slate-500 hover:text-[#0da2e7] text-sm transition-colors" href="#">How It Works</a></li>
+                <li><a className="text-slate-500 hover:text-[#0da2e7] text-sm transition-colors" href="#">Partner Pharmacies</a></li>
+                <li><a className="text-slate-500 hover:text-[#0da2e7] text-sm transition-colors" href="#">Download App</a></li>
+                <li><a className="text-slate-500 hover:text-[#0da2e7] text-sm transition-colors" href="#">FAQs</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-slate-900 dark:text-white font-bold mb-6">Legal & Contact</h4>
+              <ul className="space-y-4">
+                <li><a className="text-slate-500 hover:text-[#0da2e7] text-sm transition-colors" href="#">Terms of Service</a></li>
+                <li><a className="text-slate-500 hover:text-[#0da2e7] text-sm transition-colors" href="#">Privacy Policy</a></li>
+                <li><a className="text-slate-500 hover:text-[#0da2e7] text-sm transition-colors" href="#">HIPAA Compliance</a></li>
+                <li><a className="text-slate-500 hover:text-[#0da2e7] text-sm transition-colors" href="#">Contact Support</a></li>
+              </ul>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="bg-primary py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-            <div className="text-center text-white">
-              <p className="text-4xl font-extrabold">50k+</p>
-              <p className="text-sm font-medium opacity-80">Active Users</p>
-            </div>
-            <div className="text-center text-white">
-              <p className="text-4xl font-extrabold">1.2M+</p>
-              <p className="text-sm font-medium opacity-80">Orders Served</p>
-            </div>
-            <div className="text-center text-white">
-              <p className="text-4xl font-extrabold">500+</p>
-              <p className="text-sm font-medium opacity-80">Partner Pharmacies</p>
-            </div>
-            <div className="text-center text-white">
-              <p className="text-4xl font-extrabold">99.9%</p>
-              <p className="text-sm font-medium opacity-80">Order Fulfillment</p>
-            </div>
+          <div className="max-w-[1200px] mx-auto border-t border-slate-100 dark:border-slate-800 mt-12 pt-8 text-center text-slate-400 text-sm">
+            © 2026 PharmaBridge Inc. All rights reserved. Your health is our bridge to the community.
           </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 sm:py-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-              Everything you need in one app
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500 dark:text-slate-400">
-              Modern features designed to make healthcare accessible and convenient for everyone.
-            </p>
-          </div>
-
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { title: 'Prescription Upload', desc: 'Securely upload your doctor\'s prescription for verification.', icon: Pill },
-              { title: 'Real-time Tracking', desc: 'Watch your medicine progress from pharmacy to your doorstep.', icon: Truck },
-              { title: 'Chat with Pharmacist', desc: 'Get professional advice directly through our secure chat.', icon: MessageSquare },
-              { title: 'Health Records', desc: 'Access your order history and uploaded prescriptions anytime.', icon: History },
-              { title: 'Verified Pharmacies', desc: 'Shop only from government-registered and verified local stores.', icon: ShieldCheck },
-              { title: 'Medication Reminders', desc: 'Never miss a dose with our built-in pill alert system.', icon: Clock },
-            ].map((feature, i) => (
-              <Card key={i} className="card-hover border-none bg-white p-4 dark:bg-slate-900">
-                <CardHeader>
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <feature.icon className="h-6 w-6" />
-                  </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
-                  <CardDescription className="text-sm">{feature.desc}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How it Works */}
-      <section className="bg-slate-100 py-20 dark:bg-slate-900 sm:py-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white">How it works</h2>
-            <p className="mt-4 text-slate-500">Getting your medicines delivered is just 3 steps away.</p>
-          </div>
-          
-          <div className="grid gap-8 md:grid-cols-3 relative">
-            <div className="hidden md:block absolute top-12 left-1/2 w-full h-0.5 bg-slate-200 dark:bg-slate-800 -translate-x-1/2 z-0" />
-            
-            {[
-              { step: '01', title: 'Find Medicines', desc: 'Search for medications or upload a prescription.', icon: Search },
-              { step: '02', title: 'Choose Pharmacy', desc: 'Select from nearby registered local pharmacies.', icon: MapPin },
-              { step: '03', title: 'Fast Delivery', desc: 'Get your medicines at your doorstep in 30 mins.', icon: Truck },
-            ].map((step, i) => (
-              <div key={i} className="relative z-10 text-center flex flex-col items-center">
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-primary shadow-xl dark:bg-slate-800 ring-4 ring-slate-100 dark:ring-slate-900">
-                  <step.icon className="h-8 w-8" />
-                </div>
-                <Badge className="mb-2">{step.step}</Badge>
-                <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                <p className="text-slate-500 max-w-xs">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 sm:py-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-extrabold">Loved by patients and pharmacists</h2>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-             {[1, 2, 3].map((i) => (
-               <Card key={i} className="bg-white dark:bg-slate-900 border-none shadow-sm">
-                 <CardHeader>
-                   <div className="flex gap-1 text-amber-500 mb-2">
-                     {[1, 2, 3, 4, 5].map(s => <PlusCircle key={s} className="h-4 w-4 fill-current" />)}
-                   </div>
-                   <p className="text-slate-600 dark:text-slate-400 italic">"PharmaBridge has completely changed how I manage my monthly medications. The interface is simple and the delivery is incredibly fast."</p>
-                 </CardHeader>
-                 <CardFooter className="flex items-center gap-4">
-                   <div className="h-10 w-10 rounded-full bg-slate-200 dark:bg-slate-800" />
-                   <div>
-                     <p className="text-sm font-bold">Rahul Sharma</p>
-                     <p className="text-xs text-slate-500">Regular Customer</p>
-                   </div>
-                 </CardFooter>
-               </Card>
-             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-primary px-8 py-16 text-center text-white shadow-2xl md:py-24">
-          <h2 className="text-3xl font-extrabold sm:text-5xl">Ready to get started?</h2>
-          <p className="mt-6 text-lg font-medium opacity-80 sm:text-xl">
-            Join thousands of users who have streamlined their medicine delivery process.
-          </p>
-          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-            <Link to="/register">
-              <Button size="lg" variant="secondary" className="h-14 px-10 text-lg font-bold shadow-xl">
-                Create Free Account
-              </Button>
-            </Link>
-            <Link to="/pharmacy-partner">
-              <Button size="lg" variant="outline" className="h-14 border-white text-white hover:bg-white hover:text-primary px-10 text-lg font-bold">
-                Become a Partner
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white py-12 dark:border-slate-800 dark:bg-slate-950">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-           <div className="grid gap-12 md:grid-cols-4">
-              <div className="col-span-1 md:col-span-1">
-                <Link to="/" className="flex items-center gap-2 mb-6">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white font-bold">PB</div>
-                  <span className="text-xl font-bold underline-offset-4 decoration-primary decoration-4">Pharma<span className="text-primary">Bridge</span></span>
-                </Link>
-                <p className="text-sm text-slate-500">Digital medicine ordering platform connecting patients with local authorized pharmacies safely.</p>
-              </div>
-              <div>
-                <h4 className="font-bold mb-4">Platform</h4>
-                <ul className="space-y-2 text-sm text-slate-500">
-                  <li><Link to="/search">Order Medicines</Link></li>
-                  <li><Link to="/pharmacy-partner">For Pharmacies</Link></li>
-                  <li><Link to="/how-it-works">How it Works</Link></li>
-                  <li><Link to="/testimonials">Testimonials</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-bold mb-4">Support</h4>
-                <ul className="space-y-2 text-sm text-slate-500">
-                  <li><Link to="/contact">Contact Us</Link></li>
-                  <li><Link to="/help">Help Center</Link></li>
-                  <li><Link to="/privacy">Privacy Policy</Link></li>
-                  <li><Link to="/terms">Terms of Service</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-bold mb-4">Contact Info</h4>
-                <div className="flex flex-col gap-2 text-sm text-slate-500">
-                  <p className="flex items-center gap-2"><MapPin className="h-4 w-4" /> 123 Healthcare Way, Metro City, India</p>
-                  <p className="flex items-center gap-2"><Clock className="h-4 w-4" /> 24/7 Support Available</p>
-                  <p className="flex items-center gap-2 underline decoration-primary font-bold">support@pharmabridge.com</p>
-                </div>
-              </div>
-           </div>
-           <div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-sm text-slate-500">© 2026 PharmaBridge Inc. All rights reserved.</p>
-              <div className="flex gap-6">
-                 {['Twitter', 'Facebook', 'Instagram', 'LinkedIn'].map(social => (
-                   <span key={social} className="text-sm text-slate-500 cursor-pointer hover:text-primary transition-colors">{social}</span>
-                 ))}
-              </div>
-           </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   );
 };

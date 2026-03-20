@@ -6,7 +6,7 @@ interface User {
   name: string;
   phone: string;
   email?: string;
-  role: 'PHARMACY_ADMIN';
+  role: 'ADMIN' | 'PHARMACY' | 'CUSTOMER' | 'DRIVER' | 'PHARMACY_ADMIN';
   address?: string;
   profileImage?: string;
   linkedPharmacy?: string;
