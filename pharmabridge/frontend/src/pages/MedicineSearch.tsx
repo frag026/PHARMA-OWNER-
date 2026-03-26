@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { DashboardLayout } from '../components/layouts/DashboardLayout';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
@@ -8,11 +9,9 @@ import {
   Search, 
   Filter, 
   ShoppingCart, 
-  Info, 
   Plus, 
-  Minus,
   Star,
-  ChevronDown
+  ArrowRight
 } from 'lucide-react';
 import api from '../services/api';
 
